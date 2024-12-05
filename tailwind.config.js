@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'], // You might want to adjust this to match the exact font
+        sans: ['Inter','Bowel','sans-serif'], // You might want to adjust this to match the exact font
       },
       borderRadius: {
         '3xl': '1.5rem',

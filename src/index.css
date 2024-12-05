@@ -14,4 +14,9 @@
       @apply bg-black;
     }
   }
-  
+  @font-face {
+    font-family: 'Bowel';
+    src: url('/path-to-bowel-font.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }

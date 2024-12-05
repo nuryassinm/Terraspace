@@ -1,55 +1,79 @@
-// components/Navbar.jsx
-import React, { useState } from 'react';
-import { HiMenuAlt3, HiX } from 'react-icons/hi'; // Importing icons for menu toggle
+import { useState } from 'react';
+import { Phone, Search, User, ShoppingCart } from 'lucide-react';
 
 function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="fixed w-full z-50 bg-transparent px-6 py-4">
-      <nav className="mx-auto flex justify-between items-center">
-        <a href="/" className="text-2xl font-bold text-black">ZONIXX</a>
-
-        {/* Mobile Menu Toggle Button */}
-        <button
-          onClick={toggleMenu}
-          className="md:hidden text-black focus:outline-none"
-        >
-          {isOpen ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
-        </button>
-
-        {/* Desktop Links */}
-        <div className="hidden md:flex items-center space-x-8">
-          <a href="#" className="text-gray-700">About</a>
-          <a href="#" className="text-gray-700">Trainings</a>
-          <a href="#" className="text-gray-700">Testimonials</a>
-          <a href="#" className="text-gray-700">Contacts</a>
-          <button className="px-6 py-2 rounded-full border border-black text-sm">
-            JOIN TODAY
-          </button>
+    <header className="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white text-sm py-4 shadow-md">
+      <nav className="max-w-[100rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between">
+        {/* Logo */}
+        <div className="flex items-center justify-between">
+          <a className="flex-none text-xl flex gap-2 font-semibold items-center" href="#">
+            <img
+              src="../assets/icons8-muscle-48.png"
+              alt="Fitness Hub"
+              className="h-10"
+            />
+            <h1 className="text-orange-500">Fitness Hub</h1>
+          </a>
+          {/* Hamburger Button */}
+          <div className="sm:hidden">
+            <button
+              type="button"
+              className="p-2 inline-flex justify-center items-center gap-2 rounded-md border bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-orange-500 transition-all text-sm"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16m-16 6h16"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
 
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="absolute top-full left-0 w-full bg-white shadow-lg md:hidden">
-            <div className="flex flex-col items-center py-4 space-y-4">
-              <a href="#" className="text-gray-700" onClick={toggleMenu}>About</a>
-              <a href="#" className="text-gray-700" onClick={toggleMenu}>Trainings</a>
-              <a href="#" className="text-gray-700" onClick={toggleMenu}>Testimonials</a>
-              <a href="#" className="text-gray-700" onClick={toggleMenu}>Contacts</a>
-              <button
-                onClick={toggleMenu}
-                className="px-6 py-2 rounded-full border border-black text-sm"
+        {/* Links */}
+        <div
+          className={`${isMenuOpen ? 'block' : 'hidden'} sm:block`}
+        >
+          <div className="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-center sm:mt-0 sm:pl-5">
+            {['HOME', 'PAGES', 'BLOG', 'EVENTS', 'CONTACT'].map((link, index) => (
+              <a
+                key={index}
+                className="font-medium text-gray-600 hover:text-gray-400 transition-colors duration-300 sm:px-4 sm:py-2 relative group"
+                href="#"
               >
-                JOIN TODAY
-              </button>
-            </div>
+                <span
+                  className="absolute inset-0 bg-orange-500 opacity-0 group-hover:opacity-10 transition-opacity rounded-md"
+                ></span>
+                {link}
+              </a>
+            ))}
+            <a
+              className="font-medium text-green-500 hover:text-green-600 flex items-center gap-2"
+              href="#"
+            >
+              <Phone size={16} />
+              CUSTOMERS SUPPORT
+            </a>
           </div>
-        )}
+        </div>
+
+        {/* Icons */}
+        <div className="hidden sm:flex items-center gap-4 ml-5">
+          <Search className="text-gray-600 hover:text-gray-400 cursor-pointer" size={20} />
+          <User className="text-gray-600 hover:text-gray-400 cursor-pointer" size={20} />
+          <ShoppingCart className="text-gray-600 hover:text-gray-400 cursor-pointer" size={20} />
+        </div>
       </nav>
     </header>
   );

@@ -1,67 +1,80 @@
-// components/HeroSection.jsx
-import React from 'react';
+// App.jsx
+import { motion } from 'framer-motion';
+import { Play } from 'lucide-react';
+import Nav from './Nav';
 
-function HeroSection() {
+function App() {
   return (
-    <div className="min-h-screen pt-20 px-6">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen w-full  font-bowel">
+      <Nav />
+      <main className="relative">
+      <motion.div
+                initial={{ x: 100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.4 }}
+                className="absolute inset-0"
+              >
+                <img 
+                  src="../assets/man-women-doing-crunches.jpg" 
+                  alt="Fitness Class" 
+                  className="rounded-lg w-full h-full"
+                />
+              </motion.div>
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="max-w-[100rem] mx-auto px-4"
+        >
+          <div className="relative min-h-screen flex  py-20">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 ">
+              {/* Left Content */}
+              <motion.div 
+                initial={{ x: -100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="space-y-6"
+              >
+                  <h1 className="text-5xl lg:text-[5rem] font-bold text-[#FBEEDE]">
+                  Elevate your fitness journey. Enroll in our gym classes now!
+                </h1>
+                <p className=" text-lg text-[#FBEEDE]">
+                  Our user-friendly platform makes managing transactions a breeze, ensuring <br />
+                  a hassle-free experience for you and your team join our gym classes and <br />
+                  unlock your full potential.
+                </p>
+                <div className="flex gap-4 items-center">
+                  <motion.button 
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-orange-400 text-white px-8 py-3 rounded-md"
+                  >
+                    ENROLL NOW
+                  </motion.button>
+                  <motion.button 
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center t  p-2 gap-2 text-gray-50"
+                  >
+                    <Play className="w-12 h-12 bg-green-500 p-3 text-white rounded-full" />
+                    Watch a Video
+                  </motion.button>
+                </div>
+                <div className="pt-8">
+                  <h2 className="text-[3rem]  font-bold text-gray-300">
+                    20 YEARS OF <br /> SERVICE
+                  </h2>
+                </div>
+              </motion.div>
 
-        {/* Top Section */}
-      <div className='flex flex-col text-center'>
-        <div className="text-sm text-gray-600 mb-4">
-          ACHIEVE YOUR FITNESS GOALS
-        </div>
-
-        {/* Main Heading */}
-        <h1 className="xl:text-7xl md:text-3xl font-bold mb-8">
-          FIND YOUR<br />STRENGTH
-        </h1>
-      </div>
-        {/* Image Card Section */}
-        <div className="relative rounded-3xl overflow-hidden">
-          <div className="aspect-[16/9] relative">
-            <img 
-              src="../assets/landing.jpg" 
-              alt="Fitness" 
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/10"></div>
-            
-            {/* Overlay Text */}
-            <div className="absolute top-1/2 left-8 transform -translate-y-1/2">
-              <h2 className="text-6xl font-bold text-white mb-6">
-                INSIDE<br />AND OUT.
-              </h2>
-              <p className="text-white/80 max-w-md">
-                We are dedicated to helping you achieve your fitness 
-                goals and improve your overall health and well-being.
-              </p>
-            </div>
-
-            {/* Navigation Dots */}
-            <div className="absolute bottom-8 right-8 flex items-center space-x-2">
-              <span className="text-white/80 text-sm">2/10</span>
-              <button className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                <svg 
-                  className="w-6 h-6 text-white" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
-                    d="M9 5l7 7-7 7" 
-                  />
-                </svg>
-              </button>
+              {/* Right Content - Image */}
+             
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </main>
     </div>
   );
 }
 
-export default HeroSection;
+export default App;

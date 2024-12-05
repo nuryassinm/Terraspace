@@ -1,9 +1,11 @@
-import Acessibility from "./components/Acessibility";
+import Features from "./components/Features";
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
-import CustomerExperience from "./components/CustomerExperience";
+import DiscountBanner from "./components/DiscountBanner";
 import Footer from "./components/Footer";
-import TrainingSection from "./components/TrainingSection";
+import BlogAndVideo from "./components/BlogAndVideo";
+import Mentors from "./components/Mentors";
+import Packages from "./components/Packages";
 const toggleDarkMode = () => {
   const isDarkMode = document.documentElement.classList.toggle("dark");
   localStorage.setItem("darkMode", isDarkMode ? "enabled" : "disabled");
@@ -17,14 +19,16 @@ if (localStorage.getItem("darkMode") === "enabled") {
 function App() {
   return (
     <>
-      <div className="flex items-center justify-center flex-col w-full bg-gray-100 overflow-hidden">
-      <div className="min-h-screen  w-full">
-      <Nav />
+      <div className="flex items-center justify-center flex-col w-full  overflow-hidden">
+     
+      {/* <Nav /> */}
       <Hero />
-      </div>
-        <Acessibility />
-        <TrainingSection />
-        <CustomerExperience />
+      
+        <Features />
+        <BlogAndVideo />
+        <Packages />
+        <Mentors />
+        <DiscountBanner />
         <Footer />
       </div>
     </>
