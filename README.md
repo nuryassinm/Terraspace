@@ -10,3 +10,4 @@ Currently, two official plugins are available:
 # Fitness_Hub
 # liftUp
 # liftUp
+# liftUp
