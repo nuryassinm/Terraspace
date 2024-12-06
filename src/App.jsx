@@ -1,34 +1,29 @@
-import Features from "./components/Features";
+import StatisticsBar from "./components/StatisticsBar";
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
-import DiscountBanner from "./components/DiscountBanner";
+import ClientFeedback from "./components/ClientFeedback";
 import Footer from "./components/Footer";
-import BlogAndVideo from "./components/BlogAndVideo";
-import Mentors from "./components/Mentors";
-import Packages from "./components/Packages";
-const toggleDarkMode = () => {
-  const isDarkMode = document.documentElement.classList.toggle("dark");
-  localStorage.setItem("darkMode", isDarkMode ? "enabled" : "disabled");
-};
+import TrainersSection from "./components/TrainersSection";
+import Pricing from "./components/Pricing";
+import ProgramsGrid from "./components/ProgramsGrid";
+import Blog from "./components/Blog";
 
-// To enable dark mode based on the stored preference on page load
-if (localStorage.getItem("darkMode") === "enabled") {
-  document.documentElement.classList.add("dark");
-}
+
 
 function App() {
   return (
     <>
-      <div className="flex items-center justify-center flex-col w-full  overflow-hidden">
+      <div className="flex bg-[#222222] items-center justify-center flex-col w-full  overflow-hidden">
      
-      {/* <Nav /> */}
+      <Nav />
       <Hero />
       
-        <Features />
-        <BlogAndVideo />
-        <Packages />
-        <Mentors />
-        <DiscountBanner />
+        {/* <StatisticsBar /> */}
+        <TrainersSection />
+        <ProgramsGrid />
+        <Pricing />
+        <ClientFeedback />
+        <Blog />
         <Footer />
       </div>
     </>

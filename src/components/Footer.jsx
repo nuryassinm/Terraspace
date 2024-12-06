@@ -1,110 +1,86 @@
-// components/DiscountBanner.jsx
-import React from 'react';
+// Footer.jsx
 import { motion } from 'framer-motion';
+import { Facebook, Instagram } from 'lucide-react';
 
-// components/Footer.jsx
 const Footer = () => {
+  const footerSections = {
+    about: {
+      title: "ABOUT",
+      links: ["Company", "Blog", "Why Us", "Partnership"]
+    },
+    help: {
+      title: "HELP",
+      links: ["Account", "Support", "Privacy", "Terms & Conditions"]
+    },
+    address: {
+      title: "ADDRESS",
+      links: ["Near Sagar", "Hyderabad", "India"]
+    }
+  };
+
+  const FooterColumn = ({ title, links }) => (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="mt-8 md:mt-0"
+    >
+      <h3 className="text-white font-bold mb-4">{title}</h3>
+      <ul className="space-y-3">
+        {links.map((link, index) => (
+          <li key={index}>
+            <a 
+              href="#" 
+              className="text-[#DADADA] hover:text-[#FF7907] transition-colors duration-300"
+            >
+              {link}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </motion.div>
+  );
+
   return (
-    <footer className="bg-[#1a1a1a] w-full text-gray-400">
-      <div className="container bg-[#474747] mx-auto  py-8 md:px-20 px-8 ">
-        <div className="flex gap-12 mb-12">
-          {/* Left Section */}
-          <div className='w-full'>
-            
-
-            <div className='flex justify-between  border-gray-500'>
-              
-              <p className="mb-6">
-              <div className="flex items-center gap-4 mb-6">
-              <div className="bg-orange-400 p-2 rounded-full">
-                <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-white">FITNESS HUB</h3>
+    <footer className="bg-[#222222] w-full py-16 px-4">
+      <div className="container mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Brand Column */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-white text-2xl font-bold mb-4">LiftUp</h2>
+            <p className="text-[#DADADA] mb-4">Follow Us</p>
+            <div className="flex space-x-4">
+              <motion.a
+                href="#"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="bg-[#FF7907] p-2 rounded-full"
+              >
+                <Facebook className="w-5 h-5 text-white" />
+              </motion.a>
+              <motion.a
+                href="#"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="bg-[#FF7907] p-2 rounded-full"
+              >
+                <Instagram className="w-5 h-5 text-white" />
+              </motion.a>
             </div>
+          </motion.div>
 
-                Explore Our Gym Website For A Seamless Fitness <br />
-                 Experience, Offering Expert Guidance, <br />
-                Personalized Plans, And A Supportive <br /> Community To Elevate Your Workouts.
-              </p>
-
-            <div className="flex flex-col lg:flex-row items-center justify-between ">
-                <div className="mb-6 lg:mb-0">
-                  <h3 className="text-3xl font-bold text-white mb-2">Stop</h3>
-                  <h3 className="text-3xl font-bold text-white">wishing start doing.</h3>
-                </div>
-                <button className="bg-orange-400 hover:bg-orange-500 text-white px-8 py-3 rounded-lg transition-colors">
-                  ENROLL NOW
-                </button>
-              </div>
-            </div>
-           
-          <div className='flex border-t border-b p-10 border-gray-500 w-full justify-between'>
-          <div className=" flex flex-col gap-4">
-              <h4 className="text-white font-semibold mb-4">CONTACT US</h4>
-              <a href="tel:+613648467354" className="text-xl">+ 61 364 846 7354</a>
-      
-            <div>
-              <h4 className="text-white font-semibold mb-4">FOLLOW US ON</h4>
-              <div className="flex gap-4">
-                {['youtube', 'facebook', 'twitter', 'instagram'].map((social) => (
-                  <a
-                    key={social}
-                    href={`#${social}`}
-                    className="bg-gray-800 p-2 rounded-full hover:bg-gray-700 transition-colors"
-                  >
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      {/* Add appropriate social media icon paths */}
-                    </svg>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <h4 className="text-white font-semibold mb-4">Our Location</h4>
-              <ul className="space-y-2">
-                <li>30 New Vergenia</li>
-                <li>Block No : 2456</li>
-                <li>2333 Square Meter</li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-white font-semibold mb-4">Working Hours</h4>
-              <ul className="space-y-2">
-                <li>MONDAY TO FRIDAY</li>
-                <li>Block No : 2456</li>
-                <li>Block No : 2456</li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-white font-semibold ">Week Ends</h4>
-              <ul className="space-y-2">
-                <li>Saturday - Sunday</li>
-                <li>National Holidays</li>
-                <li>Local Holidays</li>
-              </ul>
-            </div>
-          </div>
-           
-          </div>
-        </div>
-          {/* Right Section */}
-         
-        </div>
-
-       {/* Copyright */}
-        <div className="flex justify-between border-gray-800">
-          <p className="text-sm">©All copy right reserved 2024</p>
-          <p className="text-sm">Designed By: ubludesignerseed@gmail.com</p>
+          {/* Other Columns */}
+          {Object.entries(footerSections).map(([key, { title, links }]) => (
+            <FooterColumn key={key} title={title} links={links} />
+          ))}
         </div>
       </div>
     </footer>
   );
 };
 
-export default  Footer;
+export default Footer;
