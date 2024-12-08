@@ -1,82 +1,111 @@
 // Footer.jsx
-import { motion } from 'framer-motion';
-import { Facebook, Instagram } from 'lucide-react';
+import { Twitter, Linkedin, Github, Facebook, Instagram, Dribbble } from 'lucide-react';
 
 const Footer = () => {
-  const footerSections = {
-    about: {
-      title: "ABOUT",
-      links: ["Company", "Blog", "Why Us", "Partnership"]
+  const footerLinks = {
+    product: {
+      title: 'Product',
+      links: [
+        { name: 'Overview', href: '#' },
+        { name: 'Features', href: '#' },
+        { name: 'Solutions', href: '#' },
+        { name: 'Tutorials', href: '#' },
+        { name: 'Pricing', href: '#' },
+      ]
     },
-    help: {
-      title: "HELP",
-      links: ["Account", "Support", "Privacy", "Terms & Conditions"]
+    company: {
+      title: 'Company',
+      links: [
+        { name: 'About us', href: '#' },
+        { name: 'Careers', href: '#' },
+        { name: 'Press', href: '#', badge: 'New' },
+        { name: 'News', href: '#' },
+      ]
     },
-    address: {
-      title: "ADDRESS",
-      links: ["Near Sagar", "Hyderabad", "India"]
+    social: {
+      title: 'Social',
+      links: [
+        { name: 'Twitter', href: '#' },
+        { name: 'LinkedIn', href: '#' },
+        { name: 'GitHub', href: '#' },
+        { name: 'Dribbble', href: '#' },
+      ]
+    },
+    legal: {
+      title: 'Legal',
+      links: [
+        { name: 'Terms', href: '#' },
+        { name: 'Privacy', href: '#' },
+        { name: 'Cookies', href: '#' },
+        { name: 'Contact', href: '#' },
+      ]
     }
   };
 
-  const FooterColumn = ({ title, links }) => (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="mt-8 md:mt-0"
-    >
-      <h3 className="text-white font-bold mb-4">{title}</h3>
-      <ul className="space-y-3">
-        {links.map((link, index) => (
-          <li key={index}>
-            <a 
-              href="#" 
-              className="text-[#DADADA] hover:text-[#FF7907] transition-colors duration-300"
-            >
-              {link}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </motion.div>
-  );
+  const socialIcons = [
+    { icon: <Twitter size={20} />, href: '#' },
+    { icon: <Linkedin size={20} />, href: '#' },
+    { icon: <Facebook size={20} />, href: '#' },
+    { icon: <Github size={20} />, href: '#' },
+    { icon: <Instagram size={20} />, href: '#' },
+    { icon: <Dribbble size={20} />, href: '#' },
+  ];
 
   return (
-    <footer className="bg-[#222222] w-full py-16 px-4">
-      <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Brand Column */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-white text-2xl font-bold mb-4">LiftUp</h2>
-            <p className="text-[#DADADA] mb-4">Follow Us</p>
-            <div className="flex space-x-4">
-              <motion.a
-                href="#"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="bg-[#FF7907] p-2 rounded-full"
-              >
-                <Facebook className="w-5 h-5 text-white" />
-              </motion.a>
-              <motion.a
-                href="#"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="bg-[#FF7907] p-2 rounded-full"
-              >
-                <Instagram className="w-5 h-5 text-white" />
-              </motion.a>
+    <footer className="bg-[#1B1F13] w-full text-white px-6 py-12">
+      <div className="max-w-[100rem] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+          {/* Logo and Description */}
+          <div className="md:col-span-1">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-[#FD0235] text-2xl font-bold">Muscle</span>
             </div>
-          </motion.div>
+            <p className="text-gray-400 text-sm">
+              Top learning experiences that create more talent in the world.
+            </p>
+          </div>
 
-          {/* Other Columns */}
-          {Object.entries(footerSections).map(([key, { title, links }]) => (
-            <FooterColumn key={key} title={title} links={links} />
+          {/* Footer Links */}
+          {Object.values(footerLinks).map((section) => (
+            <div key={section.title}>
+              <h3 className="font-semibold mb-4">{section.title}</h3>
+              <ul className="space-y-3">
+                {section.links.map((link) => (
+                  <li key={link.name}>
+                    <a 
+                      href={link.href} 
+                      className="text-gray-400 hover:text-white text-sm flex items-center"
+                    >
+                      {link.name}
+                      {link.badge && (
+                        <span className="ml-2 bg-[#FD0235] text-white text-xs px-2 py-0.5 rounded-full">
+                          {link.badge}
+                        </span>
+                      )}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
+        </div>
+
+        {/* Bottom Section */}
+        <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+          <div className="text-gray-400 text-sm">
+            © 2024 Muscle. All rights reserved.
+          </div>
+          <div className="flex space-x-4 mt-4 md:mt-0">
+            {socialIcons.map((social, index) => (
+              <a
+                key={index}
+                href={social.href}
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>

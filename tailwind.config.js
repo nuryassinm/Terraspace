@@ -9,19 +9,16 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'Bowel', 'sans-serif'], // Ensure this matches your desired font
+        raleway: ['Raleway', 'sans-serif'],
+
       },
       borderRadius: {
         '3xl': '1.5rem',
       },
       colors: {
-        gray: {
-          50: '#F9F9F9',
-          100: '#F3F3F3',
-          600: '#666666',
-          400: '#9CA3AF',
-          800: '#1F2937',
-        },
+        primary: '#FD0235',
+        secondary: '#1B1F13',
+        gray: '#EFEEE',
       },
     },
   },
