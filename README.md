@@ -13,3 +13,4 @@ Currently, two official plugins are available:
 # liftUp
 # Muscle
 # LAW-ORDER
+# LAW-ORDER
