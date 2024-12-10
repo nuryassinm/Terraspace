@@ -21,3 +21,4 @@ Currently, two official plugins are available:
 # LAW_ORDER
 # LAW_ORDER
 # LAW_ORDER
+# Rised_Legal
