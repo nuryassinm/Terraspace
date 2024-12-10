@@ -10,16 +10,12 @@ export default {
     extend: {
       fontFamily: {
         raleway: ['Raleway', 'sans-serif'],
-
+        serif: ['Cormorant Garamond', 'serif'],
       },
       borderRadius: {
         '3xl': '1.5rem',
       },
-      colors: {
-        primary: '#FD0235',
-        secondary: '#1B1F13',
-        gray: '#EFEEE',
-      },
+     
     },
   },
   plugins: [

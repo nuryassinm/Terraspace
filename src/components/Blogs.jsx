@@ -1,40 +1,120 @@
-// App.jsx
+// BlogGrid.jsx
+import React from 'react';
 import { motion } from 'framer-motion';
-import Nav from './Nav';
-import { Dumbbell } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
-const Blogs = () => {
+const blogPosts = [
+  {
+    category: 'GENERAL',
+    title: 'AS STUDENT HEALTH AND WELLNESS ARE FINALLY FINDING',
+    excerpt: 'Iaculis nunc sed augue lacus viverra vitae congue eu. Aliquam sem fringilla ut morbi tincidunt augue. At elementum eu facilisis sed odio morbi quis commodo',
+    date: 'May 12, 2024',
+    comments: 'No Comments',
+    image: '../assets/corporate-business-people.jpg',
+  },
+  {
+    category: 'EDUCATION',
+    title: 'WE ARE PLANNING A THREE-PRONGED ATTACK',
+    excerpt: 'Iaculis nunc sed augue lacus viverra vitae congue eu. Aliquam sem fringilla ut morbi tincidunt augue. At elementum eu facilisis sed odio morbi quis commodo',
+    date: 'May 11, 2024',
+    comments: 'No Comments',
+    image: '../assets/pexels-canvastudio-3194518.jpg',
+  },
+  {
+    category: 'FAMILY',
+    title: 'WHAT THIS TOOK ON MY END WAS DEVELOPING',
+    excerpt: 'Iaculis nunc sed augue lacus viverra vitae congue eu. Aliquam sem fringilla ut morbi tincidunt augue. At elementum eu facilisis sed odio morbi quis commodo',
+    date: 'May 10, 2024',
+    comments: 'No Comments',
+    image: '../assets/pexels-canvastudio-3194521.jpg',
+  },
+  {
+    category: 'PERSONAL CASES',
+    title: 'ENHANCING STUDENT HEALTH AND WELLNESS IN ACPS',
+    excerpt: 'Iaculis nunc sed augue lacus viverra vitae congue eu. Aliquam sem fringilla ut morbi tincidunt augue. At elementum eu facilisis sed odio morbi quis commodo',
+    date: 'May 09, 2024',
+    comments: 'No Comments',
+    image: '../assets/african-american-women-sitting-table-near-document-pen-figure-gavel.jpg',
+  },
+  {
+    category: 'CORPORATE',
+    title: 'THE ESSA ADVOCACY ROLLER COASTER THAT WAS 2023',
+    excerpt: 'Iaculis nunc sed augue lacus viverra vitae congue eu. Aliquam sem fringilla ut morbi tincidunt augue. At elementum eu facilisis sed odio morbi quis commodo',
+    date: 'May 08, 2024',
+    comments: 'No Comments',
+    image: '../assets/still-life-with-scales-justice.jpg',
+  },
+  {
+    category: 'FAMILY',
+    title: 'HEALTH AND PHYSICAL EDUCATION ADVOCATES VISIT CAPITOL HILL',
+    excerpt: 'Iaculis nunc sed augue lacus viverra vitae congue eu. Aliquam sem fringilla ut morbi tincidunt augue. At elementum eu facilisis sed odio morbi quis commodo',
+    date: 'May 07, 2024',
+    comments: 'No Comments',
+    image: '../assets/smiling-corporate-business-people.jpg',
+  },
+];
+
+const BlogCard = ({ post, index }) => {
   return (
-    <div className="bg-[#1B1F13] bg-[url('../assets/landing3.jpg')] bg-cover bg-center
- w-full  font-raleway h-[40rem]">
-      <Nav />
-      <main className="container flex mx-auto px-4 pt-20">
-        <div className="flex flex-col md:flex-row py-20  items-center">
-          <motion.div 
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className=" text-white text-center w-full"
-          >
-            
-            <h1 className="text-[3rem] uppercase md:text-[5rem] font-bold mb-6">
-             
-               <span className="text-[#FD0235] pl-2">Blogs</span><br />
-            
-            </h1>
-            <p className="text-[#EFEEE] mb-8 max-w-5xl">
-              Empower Your Fitness Journey Unleash Your Potential, Build 
-              Your Strength, and Transform Your <br /> Body with Our Expert
-              Guidance  and State-of-the-Art Facilities
-            </p>
-           
-          </motion.div>
-          
-         
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1 }}
+      className="flex flex-col  h-full"
+    >
+      <div className="relative mb-4">
+        <div className="aspect-w-16 aspect-h-9 skeleton-loading rounded-lg overflow-hidden">
+          <motion.img
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            src={post.image}
+            alt={post.title}
+            className="w-full h-full object-cover"
+          />
         </div>
-      </main>
+        <div className="absolute top-4 left-4">
+          <span className="bg-orange-500 text-white px-3 py-1 text-sm rounded-md">
+            {post.category}
+          </span>
+        </div>
+      </div>
+
+      <div className="flex-grow">
+        <h2 className="text-xl font-bold mb-3 hover:text-orange-500 transition-colors">
+          {post.title}
+        </h2>
+        <p className="text-gray-600 mb-4 text-sm">
+          {post.excerpt}
+        </p>
+      </div>
+
+      <div className="mt-auto">
+        <div className="flex items-center justify-between mb-4">
+          <button className="flex items-center text-gray-700 hover:text-orange-500 transition-colors">
+            Read More <ArrowRight className="ml-2 w-4 h-4" />
+          </button>
+        </div>
+        <div className="flex items-center text-sm text-gray-500">
+          <span>{post.date}</span>
+          <span className="mx-2">•</span>
+          <span>{post.comments}</span>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+const BlogGrid = () => {
+  return (
+    <div className="max-w-[110rem] mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {blogPosts.map((post, index) => (
+          <BlogCard key={index} post={post} index={index} />
+        ))}
+      </div>
     </div>
   );
 };
 
-export default Blogs;
+export default BlogGrid;

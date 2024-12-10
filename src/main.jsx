@@ -4,12 +4,12 @@ import App from "./App";
 import "./index.css";
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import About from "./pages/About";
-import Nav from "./components/Nav";
+// import About from "./pages/About";
+// import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-import Blog from "./pages/Blog"
-import OurPricing from "./pages/OurPricing";
-import Contact from "./pages/Contact"
+// import Blog from "./pages/Blog"
+// import OurPricing from "./pages/OurPricing";
+// import Contact from "./pages/Contact"
 // import Filter from "./pages/Filter";
 const router = createBrowserRouter([
   {
@@ -20,22 +20,22 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
-      {
-        path: "/About",
-        element: <About />,
-      },
-      {
-        path: "/OurPricing",
-        element: <OurPricing />,
-      },
-      {
-        path: "/Contact",
-        element: <Contact />,
-      },
-      {
-        path: "/Blog",
-        element: <Blog />,
-      },
+      // {
+      //   path: "/About",
+      //   element: <About />,
+      // },
+      // {
+      //   path: "/OurPricing",
+      //   element: <OurPricing />,
+      // },
+      // {
+      //   path: "/Contact",
+      //   element: <Contact />,
+      // },
+      // {
+      //   path: "/Blog",
+      //   element: <Blog />,
+      // },
       
      
      
@@ -79,7 +79,7 @@ const router = createBrowserRouter([
         path: "/*",
         element: (
           <>
-            <Nav />
+            {/* <Nav /> */}
             <Footer />
             <Route />
           </>
