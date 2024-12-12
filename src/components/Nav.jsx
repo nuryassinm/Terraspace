@@ -10,7 +10,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="flex flex-wrap sm:justify-start bg-[#1c314e] sm:flex-nowrap z-50 w-full bg-transparent text-sm py-5">
+    <header className="flex flex-wrap sm:justify-start bg-[#1c314e] sm:flex-nowrap z-50 w-full  text-sm py-5">
       <nav className="max-w-[100rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between">
         {/* Logo and Toggle Button */}
         <div className="flex items-center justify-between w-full sm:w-auto">
