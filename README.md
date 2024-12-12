@@ -23,3 +23,4 @@ Currently, two official plugins are available:
 # LAW_ORDER
 # Rised_Legal
 # Wiselaws
+# Wiselaws
