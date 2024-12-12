@@ -61,3 +61,32 @@
         transform: translateX(100%);
     }
 }
+@layer utilities {
+    .aspect-video {
+      aspect-ratio: 16 / 9;
+    }
+  }
+  /* styles/globals.css */
+.text-navy-900 {
+    color: #1B284F;
+  }
+  
+  .text-gold-600 {
+    color: #C69C6D;
+  }
+  
+  .bg-gold-600 {
+    background-color: #C69C6D;
+  }
+  
+  .bg-gold-700 {
+    background-color: #B38A5E;
+  }
+  
+  .hover\:bg-gold-700:hover {
+    background-color: #B38A5E;
+  }
+  
+  .border-navy-900 {
+    border-color: #1B284F;
+  }

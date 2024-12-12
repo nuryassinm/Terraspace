@@ -1,97 +1,35 @@
-// Hero.jsx
-import { motion } from "framer-motion";
-import { Scale } from "lucide-react";
+// components/Hero.jsx
+import { motion } from 'framer-motion';
 
 const Hero = () => {
   return (
-    <div className="max-w-[110rem] mx-auto px-4 ">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        {/* Left Column */}
-        <div className="flex justify-between w-full">
+    <div className="relative min-h-screen bg-navy-900 bg-blue-600 overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 bg-[url('../assets/land.jpeg')] bg-cover bg-center" />
+      
+      <div className="relative max-w-[95rem] mx-auto px-4 py-24">
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-2xl"
         >
-          <h1 className="text-[4rem] font-serif mb-6">
-            BEST LAW FIRM
-            <br />
-            SINCE 1994
+          <p className="text-gray-400 mb-4">Home of Law & Order</p>
+          <h1 className="text-[4.5rem] font-bold w-full text-white mb-6">
+            Your <span className="text-[#C5A467]">Solution Legal <br /> </span> Consultacy
           </h1>
-          <p className="text-gray-500 text-lg mb-8">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus,
-            luctus nec ullamcorper <br /> mattis, pulvinar dapibus leo.
+          <p className="text-white text-lg mb-8">
+            Vitae auctor eu augue ut lectus arcu. Dictum fusce ut placerat orci nulla <br />
+            pellentesque dignissim enim. Enim nunc faucibus a pellentesque sit amet <br />
+            porttitor eget dolor.
           </p>
-          <div className="flex justify-between">
-          <button className="bg-orange-500 h-12 text-white px-8 py-3 rounded-md">
-            Our Services
+          <button className="px-6 py-3 bg-[#C5A467] text-white rounded hover:bg-[#b39355]">
+            FIND OUT MORE
           </button>
-
-          <div className="">
-            <div className="flex items-center gap-2">
-              <div className="flex -space-x-4">
-                {/* Sample avatar images */}
-                <div className="w-10 h-10 rounded-full bg-gray-300"></div>
-                <div className="w-10 h-10 rounded-full bg-gray-400"></div>
-                <div className="w-10 h-10 rounded-full bg-gray-500"></div>
-                <div className="w-10 h-10 rounded-full bg-pink-400 flex items-center justify-center text-white text-sm">
-                  60+
-                </div>
-              </div>
-            </div>
-            <div className="mt-2">
-              <p className="font-semibold">+60 CUSTOMERS</p>
-              <div className="flex items-center">
-                <span className="text-orange-500">★</span>
-                <span>4.9 (5.8k Review)</span>
-              </div>
-            </div>
-          </div>
-          </div>
-        </motion.div>
-        </div>
-        {/* Right Column */}
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="relative"
-        >
-          <div className="relative">
-            <div className="absolute top-0 right-0 w-40 h-40 bg-cyan-400 rounded-full blur-lg"></div>
-            <div className="absolute bottom-0 right-0 w-32 h-32 bg-orange-500 rounded-full blur-lg"></div>
-            <div className="relative bg-emerald-800 h-[500px] w-fit rounded-xl p-8">
-              <img
-                src="../assets/still-life-with-scales-justice.png"
-                alt="Justice Statue"
-                className="w-96 relative bottom-28"
-              />
-            </div>
-          </div>
         </motion.div>
       </div>
-
-      {/* Bottom Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className="mt-20 md:flex-row flex-col justify-between"
-      >
-        <h2 className="text-[3rem] font-serif mb-6">
-          EFFICIENT SOLUTIONS
-          <br />
-          THAT YOUR COMPANY
-          <br />
-          NEEDS
-        </h2>
-        <p className="text-gray-400 text-lg">
-          Non diam phasellus vestibulum lorem sed risus ultricies. Ut venenatis <br />
-          tellus in metus vulputate eu. Habitant morbi tristique senectus et netus <br />
-          et malesuada. Netus et malesuada fames ac turpis egestas.
-        </p>
-      </motion.div>
     </div>
   );
 };
+
 export default Hero;

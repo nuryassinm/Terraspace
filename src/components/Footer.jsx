@@ -1,136 +1,129 @@
-// ContactSection.jsx
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Facebook, Twitter, Youtube, Instagram, Rss, MapPin, Phone, Mail } from 'lucide-react';
+// Footer.jsx
+import { motion } from "framer-motion";
+import { Phone, Mail, MapPin } from 'lucide-react';
 
-const ContactSection = () => {
+const Footer = () => {
+  const footerSections = {
+    hawaiiOffice: {
+      title: "Hawaii Main Office",
+      details: [
+        { icon: <Phone className="w-4 h-4" />, text: "T: 383 (21) 23 43984" },
+        { icon: <Phone className="w-4 h-4" />, text: "M: 607 683 8156" },
+        { icon: <MapPin className="w-4 h-4" />, text: "A: 828 Timbercrest Road," },
+        { text: "Healy City, AK 99743" },
+        { icon: <Mail className="w-4 h-4" />, text: "E: info.us@wiselaw.com" },
+      ]
+    },
+    worldOffices: {
+      title: "World Offices",
+      locations: [
+        "US - Hawaii",
+        "US - San Francisco",
+        "UK - London",
+        "EU - Zurich",
+        "UAE - Abu Dhabi"
+      ]
+    },
+    expertise: {
+      title: "Expertise",
+      areas: [
+        "Automotive Industry",
+        "Cannabis Law",
+        "Construction & Real Estate",
+        "Media & Insurance Law",
+        "Technology & Data"
+      ]
+    },
+    faq: {
+      title: "FAQ",
+      questions: [
+        "How Do I Choose a Lawyer?",
+        "What is Domestic Violence",
+        "How is child custody determined?",
+        "Do I need a personal Lawyer?"
+      ]
+    }
+  };
+
   return (
-    <div className="w-full">
-      {/* Contact Form Section */}
-      <div className="max-w-[110rem] mx-auto px-4 sm:px-6 lg:px-8 ">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <motion.div
-  initial={{ opacity: 0, x: -20 }}
-  animate={{ opacity: 1, x: 0 }}
-  className="relative  "
->
-  {/* Background shapes */}
-  <div className=" -z-10">
-    <div className="w-48 h-48 rounded-full bg-cyan-400 blur-xl opacity-70 absolute -top-10 -left-10"></div>
-    <div className="w-48 h-48 rounded-full bg-teal-600 blur-xl opacity-70 absolute top-20 left-20"></div>
-    <div className="w-48 h-48 rounded-full bg-pink-400 blur-xl opacity-70 absolute bottom-0 right-0"></div>
-  </div>
+    <footer className="bg-[#1c314e] text-white py-16">
+      <div className="container mx-auto px-4">
+        {/* Logo */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex justify-center mb-12"
+        >
+          <div className="text-3xl font-bold flex items-center gap-2">
+            <span className="text-4xl font-raleway">W</span>
+            <span>WISELAW</span>
+          </div>
+        </motion.div>
 
-  {/* Main green circle */}
-  <div className="w-64 h-64 rounded-full bg-emerald-500 relative">
-    {/* Subject image */}
-     <img 
-        src="../assets/stylish-romantic-woman-with-flowers-jacket.png" 
-        alt="Contact" 
-        className="w-full max-w-md rounded-full"
-       />
-  </div>
-</motion.div>
-
-
+        {/* Footer Content */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Hawaii Office */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="space-y-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
           >
-            <h2 className="text-[3rem] font-medium">
-              FEEL FREE TO ASK  ANY <br /> QUESTIONS TO US
-            </h2>
-            <form className="space-y-6">
-              <div>
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-500"
-                />
-              </div>
-              <div>
-                <input
-                  type="email"
-                  placeholder="Your Email"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-500"
-                />
-              </div>
-              <div>
-                <textarea
-                  placeholder="Your Message"
-                  rows={6}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-500"
-                ></textarea>
-              </div>
-              <button className="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition-colors">
-                Send Message
-              </button>
-            </form>
+            <h3 className="text-xl font-semibold mb-4">{footerSections.hawaiiOffice.title}</h3>
+            <div className="space-y-2">
+              {footerSections.hawaiiOffice.details.map((detail, index) => (
+                <div key={index} className="flex items-center gap-2 text-gray-300">
+                  {detail.icon}
+                  <span>{detail.text}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* World Offices */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            <h3 className="text-xl font-semibold mb-4">{footerSections.worldOffices.title}</h3>
+            <ul className="space-y-2">
+              {footerSections.worldOffices.locations.map((location, index) => (
+                <li key={index} className="text-gray-300">{location}</li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Expertise */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            <h3 className="text-xl font-semibold mb-4">{footerSections.expertise.title}</h3>
+            <ul className="space-y-2">
+              {footerSections.expertise.areas.map((area, index) => (
+                <li key={index} className="text-gray-300">{area}</li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* FAQ */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+          >
+            <h3 className="text-xl font-semibold mb-4">{footerSections.faq.title}</h3>
+            <ul className="space-y-2">
+              {footerSections.faq.questions.map((question, index) => (
+                <li key={index} className="text-gray-300">{question}</li>
+              ))}
+            </ul>
           </motion.div>
         </div>
       </div>
-
-      {/* Footer Section */}
-      <footer className="bg-gradient-to-r from-gray-200 to-green-100 py-16">
-        <div className="max-w-[110rem] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div className="space-y-4">
-              <h3 className="font-bold text-xl">LAW&ORDER</h3>
-              <p className="text-gray-600">
-                Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur
-              </p>
-              <div className="flex space-x-4">
-                <Facebook className="w-5 h-5 text-orange-500 cursor-pointer" />
-                <Twitter className="w-5 h-5 text-orange-500 cursor-pointer" />
-                <Youtube className="w-5 h-5 text-orange-500 cursor-pointer" />
-                <Instagram className="w-5 h-5 text-orange-500 cursor-pointer" />
-                <Rss className="w-5 h-5 text-orange-500 cursor-pointer" />
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="font-bold text-xl">MENU</h3>
-              <ul className="space-y-2">
-                <li>Home</li>
-                <li>About the Firm</li>
-                <li>Testimonials</li>
-                <li>Contact Us</li>
-              </ul>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="font-bold text-xl">SERVICES</h3>
-              <ul className="space-y-2">
-                <li>Corporate Lawyer</li>
-                <li>Criminal Lawyer</li>
-                <li>Family Lawyer</li>
-                <li>Immigration Lawyer</li>
-              </ul>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="font-bold text-xl">WHERE WE ARE</h3>
-              <ul className="space-y-2">
-                <li className="flex items-center gap-2">
-                  <MapPin className="w-5 h-5" />
-                  2071 Jefferson Street Portsmouth, VA 23707
-                </li>
-                <li className="flex items-center gap-2">
-                  <Phone className="w-5 h-5" />
-                  757-744-3103
-                </li>
-                <li className="flex items-center gap-2">
-                  <Mail className="w-5 h-5" />
-                  noemail@domain.com
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </footer>
   );
 };
 
-export default ContactSection;
+export default Footer;

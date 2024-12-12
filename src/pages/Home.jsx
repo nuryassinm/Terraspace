@@ -3,12 +3,17 @@ import { motion } from "framer-motion";
 import Nav from "../components/Nav";
 import Hero from "../components/Hero";
 import { useState, useEffect } from "react";
-import ServiceSection from "../components/ServiceSection";
-import ContactSection from "../components/ContactSection";
+import Stats from "../components/Stats";
+import AboutUs from "../components/AboutUs";
 import Footer from "../components/Footer"
-import PricingSection from "../components/PricingSection";
-import TestimonialsSection from "../components/TestimonialsSection";
-import Blogs from "../components/Blogs";
+import Heritage from "../components/Heritage";
+import PracticeAreas from "../components/PracticeAreas";
+import Team from "../components/Team";
+import Expertise from '../components/Expertise'
+import CounterSection from "../components/CounterSection";
+import FAQSection from "../components/FAQSection";
+import Internship from "../components/Internship";
+
 function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -31,12 +36,17 @@ function Home() {
           transition={{ duration: 0.5 }}
         >
           <Hero />
-          <ServiceSection />
-          <ContactSection />
-          <TestimonialsSection />
-          <PricingSection />
-          <Blogs />
+          <Stats />
+          <AboutUs />
+          <PracticeAreas />
+          <Heritage />
+          <Team />
+          <Internship />
+          <Expertise />
+          <CounterSection />
+          <FAQSection />
           <Footer />
+
         </motion.div>
       )}
     </div>

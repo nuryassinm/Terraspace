@@ -1,124 +1,64 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { Phone, Scale, Menu, X } from "lucide-react";
+// components/Navbar.jsx
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react'; // Import icons from Lucid Icons
 
-const NavbarComponent = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="w-full p-4 "
-    >
-      <div className="mx-auto px-4 flex items-center justify-between">
-        {/* Logo Section */}
-        <div className="flex items-center space-x-4">
-          <span className="text-2xl font-serif font-bold flex items-center">
-            <span className="mr-1">
-              <Scale className="h-5 w-5 text-orange-400" />
-            </span>
-            LAW&ORDER
-          </span>
-        </div>
-
-        {/* Hamburger Menu for Small Screens */}
-        <div className="md:hidden">
+    <header className="flex flex-wrap sm:justify-start bg-[#1c314e] sm:flex-nowrap z-50 w-full bg-transparent text-sm py-5">
+      <nav className="max-w-[100rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between">
+        {/* Logo and Toggle Button */}
+        <div className="flex items-center justify-between w-full sm:w-auto">
+          <div className="flex items-center">
+            <span className="text-4xl font-raleway text-white md:mr-3 mr-1">W</span>
+            <a className="text-3xl font-semibold text-white" href="#">
+              WISELAW
+            </a>
+          </div>
           <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-gray-700 focus:outline-none"
+            type="button"
+            onClick={toggleMenu}
+            className="p-2 sm:hidden inline-flex justify-center items-center gap-2 rounded-md border text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-blue-600"
           >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
-        {/* Menu Links for Desktop */}
-        <div className="hidden md:flex items-center space-x-6 text-md text-gray-700">
-          <a href="/" className="hover:text-orange-500 transition ease-in-out">
-            Home
-          </a>
-          <a
-            href="/about"
-            className="hover:text-orange-500 transition ease-in-out"
-          >
-            About The Firm
-          </a>
-          <div className="relative group">
-            <button className="hover:text-orange-500 transition ease-in-out">
-              Our Blog
-            </button>
-            <div className="absolute left-0 mt-2 hidden w-32 bg-white border border-gray-200 shadow-lg group-hover:block">
-              <a
-                href="/blog/post-1"
-                className="block px-4 py-2 hover:bg-orange-100"
-              >
-                Post 1
-              </a>
-              <a
-                href="/blog/post-2"
-                className="block px-4 py-2 hover:bg-orange-100"
-              >
-                Post 2
-              </a>
-            </div>
-          </div>
-          <a
-            href="/contact"
-            className="hover:text-orange-500 transition ease-in-out"
-          >
-            Contact Us
-          </a>
-        </div>
-
-        {/* Call-to-Action Button */}
-        <a
-          href="tel:+7577443103"
-          className="hidden md:flex items-center space-x-2 bg-orange-500 text-white py-3 px-4 rounded-lg shadow-lg hover:bg-orange-600 transition ease-in-out"
+        {/* Navigation Links */}
+        <div
+          className={`${
+            isOpen ? "block" : "hidden"
+          } sm:flex sm:items-center w-full sm:w-auto mt-4 sm:mt-0`}
         >
-          <Phone className="h-5 w-5" />
-          <span>+757 744 3103</span>
-        </a>
-      </div>
-
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden mt-4 bg-white shadow-lg border-t border-gray-200">
-          <a
-            href="/"
-            className="block px-4 py-2 text-gray-700 hover:bg-orange-100"
-          >
-            Home
-          </a>
-          <a
-            href="/about"
-            className="block px-4 py-2 text-gray-700 hover:bg-orange-100"
-          >
-            About The Firm
-          </a>
-          <a
-            href="/blog"
-            className="block px-4 py-2 text-gray-700 hover:bg-orange-100"
-          >
-            Our Blog
-          </a>
-          <a
-            href="/contact"
-            className="block px-4 py-2 text-gray-700 hover:bg-orange-100"
-          >
-            Contact Us
-          </a>
-          <a
-            href="tel:+7577443103"
-            className="flex items-center justify-center mt-4 bg-orange-500 text-white py-3 px-4 rounded-lg shadow-lg hover:bg-orange-600 transition ease-in-out"
-          >
-            <Phone className="h-5 w-5 mr-2" />
-            <span>+757 744 3103</span>
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 text-white text-lg font-medium">
+            <a href="#" className="font-medium hover:text-gray-300">
+              Home
+            </a>
+            <a href="#" className="font-medium hover:text-gray-300">
+              Attorneys
+            </a>
+            <a href="#" className="font-medium hover:text-gray-300">
+              Practice Areas
+            </a>
+            <a href="#" className="font-medium hover:text-gray-300">
+              About Us
+            </a>
+            <a
+              href="#"
+              className="px-4 py-2 bg-[#C5A467] text-white rounded hover:bg-[#b39355]"
+            >
+              Contact Now
+            </a>
+          </div>
         </div>
-      )}
-    </motion.div>
+      </nav>
+    </header>
   );
 };
 
-export default NavbarComponent;
+export default Navbar;
