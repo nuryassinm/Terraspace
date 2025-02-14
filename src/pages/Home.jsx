@@ -3,16 +3,14 @@ import { motion } from "framer-motion";
 import Nav from "../components/Nav";
 import Hero from "../components/Hero";
 import { useState, useEffect } from "react";
-import Stats from "../components/Stats";
-import AboutUs from "../components/AboutUs";
+import FAQ from "../components/FAQ";
+import BusinessPartners from "../components/BusinessPartners";
 import Footer from "../components/Footer"
-import Heritage from "../components/Heritage";
-import PracticeAreas from "../components/PracticeAreas";
-import Team from "../components/Team";
-import Expertise from '../components/Expertise'
-import CounterSection from "../components/CounterSection";
-import FAQSection from "../components/FAQSection";
-import Internship from "../components/Internship";
+import Testimonials from "../components/Testimonials";
+import PopularProperties from "../components/PopularProperties";
+import WhyChooseUs from "../components/WhyChooseUs";
+import HighlightsSection from "../components/HighlightsSection";
+import BlogArticles from "../components/BlogArticles";
 
 function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -25,7 +23,7 @@ function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen font-serif bg-white">
+    <div className="min-h-screen font-urbanist overflow-hidden ">
       <Nav />
       {isLoading ? (
         <SkeletonLoader />
@@ -36,15 +34,15 @@ function Home() {
           transition={{ duration: 0.5 }}
         >
           <Hero />
-          <Stats />
-          <AboutUs />
-          <PracticeAreas />
-          <Heritage />
-          <Team />
-          <Internship />
-          <Expertise />
-          <CounterSection />
-          <FAQSection />
+          {/* <Mission /> */}
+          <BusinessPartners />
+          <PopularProperties />
+          <HighlightsSection />
+          {/* <Services /> */}
+          <WhyChooseUs />
+          <FAQ />
+          <Testimonials />
+          <BlogArticles />
           <Footer />
 
         </motion.div>

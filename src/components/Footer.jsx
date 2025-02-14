@@ -1,125 +1,136 @@
-// Footer.jsx
-import { motion } from "framer-motion";
-import { Phone, Mail, MapPin } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
 
 const Footer = () => {
-  const footerSections = {
-    hawaiiOffice: {
-      title: "Hawaii Main Office",
-      details: [
-        { icon: <Phone className="w-4 h-4" />, text: "T: 383 (21) 23 43984" },
-        { icon: <Phone className="w-4 h-4" />, text: "M: 607 683 8156" },
-        { icon: <MapPin className="w-4 h-4" />, text: "A: 828 Timbercrest Road," },
-        { text: "Healy City, AK 99743" },
-        { icon: <Mail className="w-4 h-4" />, text: "E: info.us@wiselaw.com" },
-      ]
-    },
-    worldOffices: {
-      title: "World Offices",
-      locations: [
-        "US - Hawaii",
-        "US - San Francisco",
-        "UK - London",
-        "EU - Zurich",
-        "UAE - Abu Dhabi"
-      ]
-    },
-    expertise: {
-      title: "Expertise",
-      areas: [
-        "Automotive Industry",
-        "Cannabis Law",
-        "Construction & Real Estate",
-        "Media & Insurance Law",
-        "Technology & Data"
-      ]
-    },
-    faq: {
-      title: "FAQ",
-      questions: [
-        "How Do I Choose a Lawyer?",
-        "What is Domestic Violence",
-        "How is child custody determined?",
-        "Do I need a personal Lawyer?"
-      ]
-    }
+  const [email, setEmail] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle email submission
+    console.log('Email submitted:', email);
+    setEmail('');
+  };
+
+  const footerLinks = {
+    explore: [
+      { name: 'Buy', href: '#' },
+      { name: 'Rent', href: '#' },
+      { name: 'Short Term', href: '#' },
+      { name: 'New Projects', href: '#' },
+      { name: 'List Your Property', href: '#' },
+    ],
+    services: [
+      { name: 'Property Management', href: '#' },
+      { name: 'Property Valuation', href: '#' },
+      { name: 'Property Exchange', href: '#' },
+      { name: 'Legal Agreements', href: '#' },
+    ],
+    quickLinks: [
+      { name: 'Blogs', href: '#' },
+      { name: 'FAQ', href: '#' },
+      { name: 'Reviews', href: '#' },
+    ],
   };
 
   return (
-    <footer className="bg-[#1c314e] text-white py-16">
-      <div className="container mx-auto px-4">
-        {/* Logo */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="flex justify-center mb-12"
-        >
-          <div className="text-3xl font-bold flex items-center gap-2">
-            <span className="text-4xl font-raleway">W</span>
-            <span>WISELAW</span>
-          </div>
-        </motion.div>
+    <footer className="bg-black text-white py-16">
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+          {/* Logo and Description */}
+          <div className="lg:col-span-2">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="space-y-6"
+            >
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-8 bg-white"></div>
+                <span className="text-xl font-bold">TerraSpace</span>
+              </div>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Where Your Dream Space Becomes Reality. Building Futures. One Property at a Time.
+              </p>
+            </motion.div>
 
-        {/* Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Hawaii Office */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <h3 className="text-xl font-semibold mb-4">{footerSections.hawaiiOffice.title}</h3>
-            <div className="space-y-2">
-              {footerSections.hawaiiOffice.details.map((detail, index) => (
-                <div key={index} className="flex items-center gap-2 text-gray-300">
-                  {detail.icon}
-                  <span>{detail.text}</span>
-                </div>
-              ))}
+            {/* Email Subscription */}
+            <div className="mt-8">
+              <h3 className="text-lg font-semibold mb-4">Are you finding a home?</h3>
+              <form onSubmit={handleSubmit} className="relative">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Email address"
+                  className="w-full bg-transparent border-b border-gray-700 py-2 pr-10 focus:outline-none focus:border-white transition-colors"
+                />
+                <button
+                  type="submit"
+                  className="absolute right-0 top-1/2 -translate-y-1/2"
+                >
+                  <ArrowUpRight className="w-5 h-5" />
+                </button>
+              </form>
             </div>
-          </motion.div>
+          </div>
 
-          {/* World Offices */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-          >
-            <h3 className="text-xl font-semibold mb-4">{footerSections.worldOffices.title}</h3>
-            <ul className="space-y-2">
-              {footerSections.worldOffices.locations.map((location, index) => (
-                <li key={index} className="text-gray-300">{location}</li>
+          {/* Links Sections */}
+          <div>
+            <h3 className="text-lg font-semibold mb-6">Explore</h3>
+            <ul className="space-y-4">
+              {footerLinks.explore.map((link) => (
+                <li key={link.name}>
+                  <a href={link.href} className="text-gray-400 hover:text-white transition-colors">
+                    {link.name}
+                  </a>
+                </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
-          {/* Expertise */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-          >
-            <h3 className="text-xl font-semibold mb-4">{footerSections.expertise.title}</h3>
-            <ul className="space-y-2">
-              {footerSections.expertise.areas.map((area, index) => (
-                <li key={index} className="text-gray-300">{area}</li>
+          <div>
+            <h3 className="text-lg font-semibold mb-6">Services</h3>
+            <ul className="space-y-4">
+              {footerLinks.services.map((link) => (
+                <li key={link.name}>
+                  <a href={link.href} className="text-gray-400 hover:text-white transition-colors">
+                    {link.name}
+                  </a>
+                </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
-          {/* FAQ */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-          >
-            <h3 className="text-xl font-semibold mb-4">{footerSections.faq.title}</h3>
-            <ul className="space-y-2">
-              {footerSections.faq.questions.map((question, index) => (
-                <li key={index} className="text-gray-300">{question}</li>
+          <div>
+            <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
+            <ul className="space-y-4">
+              {footerLinks.quickLinks.map((link) => (
+                <li key={link.name}>
+                  <a href={link.href} className="text-gray-400 hover:text-white transition-colors">
+                    {link.name}
+                  </a>
+                </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div className="text-gray-400 text-sm">
+            © 2024 frameix All right reserved
+          </div>
+          <div className="flex space-x-6 text-sm">
+            <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              Privacy Policy
+            </a>
+            <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              Country Sitemap
+            </a>
+            <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              Cookie Policy
+            </a>
+          </div>
         </div>
       </div>
     </footer>

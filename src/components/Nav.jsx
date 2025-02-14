@@ -1,63 +1,84 @@
-// components/Navbar.jsx
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react'; // Import icons from Lucid Icons
+import React, { useState } from 'react';
+import { Menu, X, ChevronDown } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { GiStairs } from "react-icons/gi";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
+  const menuVariants = {
+    open: { opacity: 1, height: "auto" },
+    closed: { opacity: 0, height: 0 }
   };
 
   return (
-    <header className="flex flex-wrap sm:justify-start bg-[#1c314e] sm:flex-nowrap z-50 w-full  text-sm py-5">
-      <nav className="max-w-[100rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between">
-        {/* Logo and Toggle Button */}
-        <div className="flex items-center justify-between w-full sm:w-auto">
-          <div className="flex items-center">
-            <span className="text-4xl font-raleway text-white md:mr-3 mr-1">W</span>
-            <a className="text-3xl font-semibold text-white" href="#">
-              WISELAW
-            </a>
+    <motion.nav 
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      className="bg-white"
+    >
+      <div className="max-w-[110rem] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex-shrink-0 flex gap-2">
+            <GiStairs className='text-black text-2xl mt-2'/>
+            <h1 className="text-3xl  font-bold  text-[#0B1D27]">TerraSpace</h1>
           </div>
-          <button
-            type="button"
-            onClick={toggleMenu}
-            className="p-2 sm:hidden inline-flex justify-center items-center gap-2 rounded-md border text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-blue-600"
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center text-lg space-x-8">
+            <a href="/" className="text-[#0B1D27] text-xl font-urbanist font-medium">Home</a>
+            <a href="/about" className="text-[#656E73] font-urbanist">About Us</a>
+            <div className="relative group">
+              <button className="flex items-center text-[#656E73] font-urbanist">
+                Property
+                <ChevronDown className="ml-1 h-4 w-4" />
+              </button>
+              <div className="absolute hidden group-hover:block w-48 bg-white shadow-lg rounded-md mt-2">
+                <a href="#" className="block px-4 py-2 text-sm text-[#656E73] hover:bg-gray-100">Residential</a>
+                <a href="#" className="block px-4 py-2 text-sm text-[#656E73] hover:bg-gray-100">Commercial</a>
+                <a href="#" className="block px-4 py-2 text-sm text-[#656E73] hover:bg-gray-100">Industrial</a>
+              </div>
+            </div>
+            <a href="/blogs" className="text-[#656E73] font-urbanist">Blogs</a>
+            </div>
+            <button className="bg-[#0B1D27] hidden md:block text-white px-6 py-2 rounded-full font-urbanist">
+              Let's Talk
+            </button>
+          
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-[#0B1D27]"
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <motion.div
+        variants={menuVariants}
+        initial="closed"
+        animate={isMenuOpen ? "open" : "closed"}
+        className="md:hidden"
+      >
+        <div className="px-2 pt-2 pb-3 space-y-1 bg-white">
+          <a href="/" className="block px-3 py-2 text-[#0B1D27] font-medium">Home</a>
+          <a href="/about" className="block px-3 py-2 text-[#656E73]">About Us</a>
+          <button className="flex items-center w-full px-3 py-2 text-[#656E73]">
+            Property
+            <ChevronDown className="ml-1 h-4 w-4" />
+          </button>
+          <a href="/blogs" className="block px-3 py-2 text-[#656E73]">Blogs</a>
+          <button className="w-full bg-[#0B1D27] text-white px-6 py-2 rounded-full mt-4">
+            Let's Talk
           </button>
         </div>
-
-        {/* Navigation Links */}
-        <div
-          className={`${
-            isOpen ? "block" : "hidden"
-          } sm:flex sm:items-center w-full sm:w-auto mt-4 sm:mt-0`}
-        >
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 text-white text-lg font-medium">
-            <a href="#" className="font-medium hover:text-gray-300">
-              Home
-            </a>
-            <a href="#" className="font-medium hover:text-gray-300">
-              Attorneys
-            </a>
-            <a href="#" className="font-medium hover:text-gray-300">
-              Practice Areas
-            </a>
-            <a href="#" className="font-medium hover:text-gray-300">
-              About Us
-            </a>
-            <a
-              href="#"
-              className="px-4 py-2 bg-[#C5A467] text-white rounded hover:bg-[#b39355]"
-            >
-              Contact Now
-            </a>
-          </div>
-        </div>
-      </nav>
-    </header>
+      </motion.div>
+    </motion.nav>
   );
 };
 
