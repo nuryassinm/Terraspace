@@ -45,7 +45,7 @@ const DiscoverSpaces = () => {
         className="mb-12"
       >
         <div className="flex justify-between items-center">
-          <h2 className="text-3xl md:text-[4rem] font-bold flex flex-col gap-7 text-[#0B1D27] max-w-5xl">
+          <h2 className="text-3xl md:text-4xl lg:6xl font-bold flex flex-col gap-7 text-[#0B1D27] max-w-5xl">
             Discover Stylish Spaces and  <span>Inspiring Details</span> 
           </h2>
           <button className="flex items-center gap-2 border border-[#0B1D27] rounded-full px-6 py-2 text-[#0B1D27] hover:bg-[#0B1D27] hover:text-white transition-colors duration-300">

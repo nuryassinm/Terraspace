@@ -94,7 +94,7 @@ const PropertySection = () => {
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-12"
       >
-        <h2 className="text-3xl text-[4rem] flex flex-col gap-8 font-bold text-[#0B1D27] font-urbanist mb-12">
+        <h2 className="text-3xl md:text-5xl flex flex-col gap-8 font-bold text-[#0B1D27] font-urbanist mb-12">
           Explore Our Highly Rated <span>Apartments & Buildings</span>
           
         </h2>
